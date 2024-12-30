@@ -18,7 +18,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-
+        "strings"
 	"github.com/google/generative-ai-go/genai"
 	"github.com/line/line-bot-sdk-go/v8/linebot"
 	"github.com/line/line-bot-sdk-go/v8/linebot/messaging_api"
