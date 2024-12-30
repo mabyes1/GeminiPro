@@ -149,7 +149,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				for _, k := range message.Keywords {
 					kw = kw + "," + k
 				}
-				kw="我的心情是"+kw
+				kw="我的心情是"+kw+"只需回覆我 不要給我建議"
 				//outStickerResult := fmt.Sprintf("收到貼圖訊息: %s, pkg: %s kw: %s  text: %s", message.StickerId, message.PackageId, kw, message.Text)
 				
 				
