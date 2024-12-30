@@ -118,14 +118,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					continue
 				}
 				// 使用這個 ChatSession 來處理訊息 & Reply with Gemini result
-				if strings.ContainsAny(req,[]string{"tako","他口","TAKO"})
-				{
+				//if strings.ContainsAny(req,[]string{"tako","他口","TAKO"})
+				//{
 				res := send(cs, req)
 				ret := printResponse(res)
 				
 					if err := replyText(e.ReplyToken, ret); err != nil {
 					log.Print(err)
-				}		
+				//}		
 				}
 			// Handle only on Sticker message
 			case webhook.StickerMessageContent:
