@@ -122,9 +122,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				{
 				res := send(cs, req)
 				ret := printResponse(res)
-				}
+				
 					if err := replyText(e.ReplyToken, ret); err != nil {
 					log.Print(err)
+				}		
 				}
 			// Handle only on Sticker message
 			case webhook.StickerMessageContent:
