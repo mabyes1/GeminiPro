@@ -154,39 +154,8 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				kw="當我的心情是"+kw+" 只需用中文回覆我你應該說些什麼 不要給我建議"
 				//outStickerResult := fmt.Sprintf("收到貼圖訊息: %s, pkg: %s kw: %s  text: %s", message.StickerId, message.PackageId, kw, message.Text)
 				
+
 				
-
-
-				req := message.Text
-				// 檢查是否已經有這個用戶的 ChatSession or req == "reset"
-
-				// 取得用戶 ID
-				var uID string
-				switch source := e.Source.(type) {
-				case *webhook.UserSource:
-					uID = source.UserId
-				case *webhook.GroupSource:
-					uID = source.UserId
-				case *webhook.RoomSource:
-					uID = source.UserId
-				}
-
-				// 檢查是否已經有這個用戶的 ChatSession
-				cs, ok := userSessions[uID]
-				if !ok {
-					// 如果沒有，則創建一個新的 ChatSession
-					cs = startNewChatSession()
-					userSessions[uID] = cs
-				}
-				if req == "reset" {
-					// 如果需要重置記憶，創建一個新的 ChatSession
-					cs = startNewChatSession()
-					userSessions[uID] = cs
-					if err := replyText(e.ReplyToken, "很高興初次見到你，請問有什麼想了解的嗎？"); err != nil {
-						log.Print(err)
-					}
-					continue
-				}
 				// 使用這個 ChatSession 來處理訊息 & Reply with Gemini result
 				res := send(cs, kw)
 				ret := printResponse(res)
