@@ -153,21 +153,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 				kw="當我的心情是"+kw+" 只需用中文回覆我你應該說些什麼 不要給我建議"
 				//outStickerResult := fmt.Sprintf("收到貼圖訊息: %s, pkg: %s kw: %s  text: %s", message.StickerId, message.PackageId, kw, message.Text)
-				var uID string
-				switch source := e.Source.(type) {
-				case *webhook.UserSource:
-					uID = source.UserId
-				case *webhook.GroupSource:
-					uID = source.UserId
-				case *webhook.RoomSource:
-					uID = source.UserId
-				}
-				var cs string
-                                   cs = startNewChatSession()
-					userSessions[uID] = cs
+			
 				
 				// 使用這個 ChatSession 來處理訊息 & Reply with Gemini result
-				res := send(cs, kw)
+				res := send(startNewChatSession(), kw)
 				ret := printResponse(res)
 
 
