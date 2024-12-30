@@ -4,7 +4,7 @@ module github.com/kkdai/linebot-gemini-pro
 go 1.21.1
 
 require (
-	github.com/google/generative-ai-go/genai
+	github.com/google/generative-ai-go/genai v1.2.3
 	github.com/line/line-bot-sdk-go/v8 v8.2.0
 	google.golang.org/api v0.154.0
 )
