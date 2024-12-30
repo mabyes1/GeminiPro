@@ -119,16 +119,18 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 				// 使用這個 ChatSession 來處理訊息 & Reply with Gemini result
 				
-				keywords := []string{"TAKO", "他口","章魚"}
+				keywords := []string{"tako", "他口","章魚"}
 				 found := false
 				 for _, keyword := range keywords {
               				  if strings.Contains(strings.ToLower(req), keyword) {
+					 req :=strings.Replace(req,keyword,"")	  
                       			  found = true
                       			  break
                				 }
        					 }
 				 if found {
                			 // 如果找到匹配的關鍵字，執行後續處理
+					
              			   res := send(cs, req)
                 		ret := printResponse(res)
               			
@@ -149,7 +151,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				for _, k := range message.Keywords {
 					kw = kw + "," + k
 				}
-				kw="我的心情是"+kw+"只需用中文回覆我 我對你說這些話的回應 不要給我建議"
+				kw="當我的心情是"+kw+" 只需用中文回覆我你應該說些什麼 不要給我建議"
 				//outStickerResult := fmt.Sprintf("收到貼圖訊息: %s, pkg: %s kw: %s  text: %s", message.StickerId, message.PackageId, kw, message.Text)
 				
 				
