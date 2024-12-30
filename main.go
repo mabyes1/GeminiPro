@@ -122,7 +122,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				keywords := []string{"TAKO", "他口","章魚"}
 				 found := false
 				 for _, keyword := range keywords {
-              				  if strings.Contains(req, keyword) {
+              				  if strings.Contains(strings.ToLower(req), keyword) {
                       			  found = true
                       			  break
                				 }
