@@ -172,7 +172,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 
 				
 				
-				if err := replyText(e.ReplyToken, outStickerResult); err != nil {
+				if err := replyText(e.ReplyToken, ret); err != nil {
 					log.Print(err)
 				}
 
