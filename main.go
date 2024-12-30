@@ -123,7 +123,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				 found := false
 				 for _, keyword := range keywords {
               				  if strings.Contains(strings.ToLower(req), keyword) {
-					 req :=strings.Replace(req,keyword,"")	  
+					 req :=strings.Replace(req,keyword,"",1)	  
                       			  found = true
                       			  break
                				 }
