@@ -118,22 +118,38 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					continue
 				}
 				// 使用這個 ChatSession 來處理訊息 & Reply with Gemini result
-				//if strings.ContainsAny(req,[]string{"tako","他口","TAKO"})
-				//{
-				res := send(cs, req)
-				ret := printResponse(res)
 				
-					if err := replyText(e.ReplyToken, ret); err != nil {
-					log.Print(err)
-				//}		
-				}
+				keywords := []string{"TAKO", "他口","章魚"}
+				 found := false
+				 for _, keyword := range keywords {
+              				  if strings.Contains(req, keyword) {
+                      			  found = true
+                      			  break
+               				 }
+       					 }
+				 if found {
+               			 // 如果找到匹配的關鍵字，執行後續處理
+             			   res := send(cs, req)
+                		ret := printResponse(res)
+              			
+			        if err := replyText(e.ReplyToken, ret); err != nil {
+                       		 log.Print(err)
+                }
+      			  } else {
+                // 如果沒有找到匹配的關鍵字，執行其他處理
+              
+    			    }
+
+
+				
+			
 			// Handle only on Sticker message
 			case webhook.StickerMessageContent:
 				var kw string
 				for _, k := range message.Keywords {
 					kw = kw + "," + k
 				}
-				kw="我現在的心情"+kw
+				kw="我覺得很"+kw
 				//outStickerResult := fmt.Sprintf("收到貼圖訊息: %s, pkg: %s kw: %s  text: %s", message.StickerId, message.PackageId, kw, message.Text)
 				
 				
