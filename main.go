@@ -131,6 +131,10 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				}
 
 				outStickerResult := fmt.Sprintf("收到貼圖訊息: %s, pkg: %s kw: %s  text: %s", message.StickerId, message.PackageId, kw, message.Text)
+				
+				res := send(cs, kw)
+				ret := printResponse(res)
+				
 				if err := replyText(e.ReplyToken, outStickerResult); err != nil {
 					log.Print(err)
 				}
