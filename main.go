@@ -149,9 +149,9 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 			case webhook.StickerMessageContent:
 				var kw string
 				for _, k := range message.Keywords {
-					kw = kw + "," + k
+					kw = kw + "、" + k
 				}
-				kw="當我的心情是"+kw+" 只需用中文回覆我你應該說些什麼 不要給我建議"
+				kw="我的心情"+kw+" ，怎麼辦? 用中文回覆我"
 				//outStickerResult := fmt.Sprintf("收到貼圖訊息: %s, pkg: %s kw: %s  text: %s", message.StickerId, message.PackageId, kw, message.Text)
 			
 				
