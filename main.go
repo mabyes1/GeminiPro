@@ -153,7 +153,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 					kw = kw + "、" + k
 					kw1=k
 				}
-				kw="我的心情"+kw1+"，你的反應是? "隨機回答一句超過5字不超過50字的中文
+				kw="我的心情"+kw1+"，你的反應是? +"以積極、消極、中立的反應隨機挑選一種回答一句超過5字不超過50字的中文"
 				//outStickerResult := fmt.Sprintf("收到貼圖訊息: %s, pkg: %s kw: %s  text: %s", message.StickerId, message.PackageId, kw, message.Text)
 			
 				
